@@ -1,0 +1,21 @@
+{
+  "public": true,
+  "name": "sentiment-ai",
+  "version": "0.1.0",
+  "description": "Sentiment analysis of arbitrary text",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "sentiment analysis",
+    "ai",
+    "artificial intelligence",
+    "machine learning",
+    "lstm",
+    "bert",
+    "ml"
+  ],
+  "author": "arturjs",
+  "license": "MIT"
+}
