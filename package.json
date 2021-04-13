@@ -3,8 +3,9 @@
   "name": "sentiment-ai",
   "version": "0.1.0",
   "description": "Sentiment analysis of arbitrary text",
-  "main": "index.js",
+  "main": "./src/main.js",
   "scripts": {
+    "build": "esbuild src/index.js --bundle --outfile=dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -17,5 +18,12 @@
     "ml"
   ],
   "author": "arturjs",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.11.10",
+    "np": "^7.4.0"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs": "^3.3.0"
+  }
 }
