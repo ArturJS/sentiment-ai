@@ -5,7 +5,9 @@
   "description": "Sentiment analysis of arbitrary text",
   "main": "./src/main.js",
   "scripts": {
-    "build": "esbuild src/index.js --bundle --outfile=dist/index.js",
+    "dev": "concurrently \"http-server -c-1 --cors\" \"npm run build-watch\"",
+    "build-watch": "esbuild src/index.js --bundle --outfile=dist/index.js --watch",
+    "build": "esbuild src/index.js --bundle --outfile=dist/index.js --define:process.env.NODE_ENV=\\\"production\\\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -20,7 +22,9 @@
   "author": "arturjs",
   "license": "MIT",
   "devDependencies": {
+    "concurrently": "^6.0.2",
     "esbuild": "^0.11.10",
+    "http-server": "^0.12.3",
     "np": "^7.4.0"
   },
   "dependencies": {

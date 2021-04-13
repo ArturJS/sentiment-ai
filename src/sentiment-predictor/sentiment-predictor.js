@@ -3,7 +3,11 @@ import imdbDictionary from './dict.txt';
 import lstmModelConfig from './model.json';
 
 async function createModel() {
-  const model = await tf.loadModel(lstmModelConfig);
+  const model = await tf.loadLayersModel({
+    async load() {
+      return lstmModelConfig;
+    },
+  });
   return model;
 }
 
@@ -97,7 +101,7 @@ export class SentimentPredictor {
     const sequence = createSequences({ dictionary: this.dictionary, text });
     let input = tf.tensor(sequence);
     input = input.expandDims(0);
-    return this.model.predict(input).dataSync();
+    return this.model.predict(input).dataSync()[0];
   }
 }
 
@@ -106,3 +110,8 @@ export const createSentimentPredictor = async (params) => {
   await sentimentPredictor.waitForLoaded();
   return sentimentPredictor;
 };
+
+Object.assign(globalThis, {
+  SentimentPredictor,
+  createSentimentPredictor,
+});
