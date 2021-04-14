@@ -5,9 +5,9 @@
   "description": "Sentiment analysis of arbitrary text",
   "main": "./src/main.js",
   "scripts": {
-    "dev": "concurrently \"http-server -c-1 --cors\" \"npm run build-watch\"",
+    "dev": "concurrently \"http-server -c-1 --cors -o\" \"npm run build-watch\"",
     "build-watch": "esbuild src/index.js --bundle --outfile=dist/index.js --watch",
-    "build": "esbuild src/index.js --bundle --outfile=dist/index.js --define:process.env.NODE_ENV=\\\"production\\\"",
+    "build": "esbuild src/index.js --bundle --minify --outfile=dist/index.js --define:process.env.NODE_ENV=\\\"production\\\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
